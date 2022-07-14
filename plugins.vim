@@ -70,7 +70,6 @@ source ~/.config/nvim/plugins/treesitter.vim
 source ~/.config/nvim/plugins/indentation.vim
 source ~/.config/nvim/plugins/navic.vim
 source ~/.config/nvim/plugins/lualine.vim
-source ~/.config/nvim/plugins/nvim-lsp-installer.vim
 source ~/.config/nvim/plugins/lsp-config.vim
 source ~/.config/nvim/plugins/lsp-colors.vim
 source ~/.config/nvim/plugins/trouble.vim

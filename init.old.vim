@@ -23,6 +23,3 @@ colorscheme onedark
 
 " Global custom keybindings
 source ~/.config/nvim/keybindings.vim
-
-" Configs
-source ~/.config/nvim/config/tab-delete.vim

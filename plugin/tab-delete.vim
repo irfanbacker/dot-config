@@ -1,3 +1,7 @@
+if exists("g:loaded_tabdelete")
+  finish
+endif
+let g:loaded_tabdelete = 1
 
 function! s:bdelete(action, bang, buffer_name)
 	let buffer = s:str2bufnr(a:buffer_name)

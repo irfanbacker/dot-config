@@ -27,7 +27,7 @@ return packer.startup(function(use)
   -- Global plugins
   use 'wbthomason/packer.nvim' -- Manage itself
   use 'nvim-lua/plenary.nvim' -- Useful functions for other packages
-  use { 'kyazdani42/nvim-web-devicons', config = function() require('lua.user.config.web-devicons') end } -- Generic icons for some packages
+  use { 'kyazdani42/nvim-web-devicons', config = function() require('user.config.web-devicons') end } -- Generic icons for some packages
 
   -- Themes
   use { 'navarasu/onedark.nvim', config = function()
@@ -39,7 +39,7 @@ return packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('lua.user.config.telescope') end
+    config = function() require('user.config.telescope') end
   }
   use { 'nvim-telescope/telescope-ui-select.nvim', requires = { 'nvim-telescope/telescope.nvim' } } -- To set telescope as native select UI
 
@@ -48,17 +48,17 @@ return packer.startup(function(use)
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
     tag = 'nightly',
-    config = function() require('lua.user.config.nvim-tree') end,
+    config = function() require('user.config.nvim-tree') end,
   }
 
   -- Treesitter config
   use { 'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    config = function() require('lua.user.config.treesitter') end,
+    config = function() require('user.config.treesitter') end,
   }
 
   -- LSP
-  use { 'neovim/nvim-lspconfig', config = function() require('lua.user.config.lsp-config') end } -- Native LSP
+  use { 'neovim/nvim-lspconfig', config = function() require('user.config.lsp-config') end } -- Native LSP
   use 'williamboman/nvim-lsp-installer' -- Language server installer for native LSP
   use {
     'kosayoda/nvim-lightbulb', -- Show code action lightbulb icon
@@ -66,11 +66,11 @@ return packer.startup(function(use)
   }
 
   -- Diagnostics
-  use { 'folke/lsp-colors.nvim', config = function() require('lua.user.config.lsp-colors') end } -- Automatically create missing LSP diagnostics highlight groups
+  use { 'folke/lsp-colors.nvim', config = function() require('user.config.lsp-colors') end } -- Automatically create missing LSP diagnostics highlight groups
   use {
     'folke/trouble.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', 'folke/lsp-colors.nvim' },
-    config = function() require('lua.user.config.trouble') end,
+    config = function() require('user.config.trouble') end,
   }
 
   -- Autocompletion
@@ -88,42 +88,42 @@ return packer.startup(function(use)
       'hrsh7th/cmp-cmdline',
       { 'saadparwaiz1/cmp_luasnip', requires = 'L3MON4D3/LuaSnip' },
     },
-    config = function() require('lua.user.config.nvim-cmp') end
+    config = function() require('user.config.nvim-cmp') end
   }
-  use {'windwp/nvim-autopairs', config = function() require('lua.user.config.autopairs') end}
+  use {'windwp/nvim-autopairs', config = function() require('user.config.autopairs') end}
 
   -- Git
-  use { 'lewis6991/gitsigns.nvim', tag = 'release', config = function() require('lua.user.config.gitsigns') end } -- Editor side git status color
+  use { 'lewis6991/gitsigns.nvim', tag = 'release', config = function() require('user.config.gitsigns') end } -- Editor side git status color
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim',
-    config = function() require('lua.user.config.diffview') end } -- Git diffview
+    config = function() require('user.config.diffview') end } -- Git diffview
 
   -- Tabs
   use {
     'akinsho/bufferline.nvim',
     tag = "v2.*",
     requires = 'kyazdani42/nvim-web-devicons',
-    config = function() require('lua.user.config.bufferline') end,
+    config = function() require('user.config.bufferline') end,
   }
 
   -- Statusline
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
-    config = function() require('lua.user.config.lualine') end,
+    config = function() require('user.config.lualine') end,
   }
 
   -- Terminal
-  use { "akinsho/toggleterm.nvim", tag = 'v2.*', config = function() require('lua.user.config.toggleterm') end }
+  use { "akinsho/toggleterm.nvim", tag = 'v2.*', config = function() require('user.config.toggleterm') end }
 
   -- Others
-  use { 'lukas-reineke/indent-blankline.nvim', config = function() require('lua.user.config.indentation') end } -- Indentation guidelines
+  use { 'lukas-reineke/indent-blankline.nvim', config = function() require('user.config.indentation') end } -- Indentation guidelines
   use { 'ellisonleao/glow.nvim', branch = 'main' } -- CLI markdown renderer
   use 'RRethy/vim-illuminate' -- Shows code context
-  use { 'SmiteshP/nvim-navic', requires = 'neovim/nvim-lspconfig', config = function() require('lua.user.config.navic') end } -- Display code context
+  use { 'SmiteshP/nvim-navic', requires = 'neovim/nvim-lspconfig', config = function() require('user.config.navic') end } -- Display code context
   use { 'mg979/vim-visual-multi', branch = 'master' } -- Multiple cursor actions
-  use { 'karb94/neoscroll.nvim', config = function() require('lua.user.config.scroll') end } -- Smooth scrolling
-  use { 'numToStr/Comment.nvim', config = function() require('lua.user.config.commenter') end, } -- Commenter
-  use { 'nacro90/numb.nvim', config = function() require('lua.user.config.goto') end } -- Goto line
+  use { 'karb94/neoscroll.nvim', config = function() require('user.config.scroll') end } -- Smooth scrolling
+  use { 'numToStr/Comment.nvim', config = function() require('user.config.commenter') end, } -- Commenter
+  use { 'nacro90/numb.nvim', config = function() require('user.config.goto') end } -- Goto line
 
   -- Install all packages if packer.nvim is just installed
   if packer_bootstrap then

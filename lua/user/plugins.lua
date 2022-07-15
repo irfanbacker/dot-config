@@ -90,7 +90,7 @@ return packer.startup(function(use)
     },
     config = function() require('user.config.nvim-cmp') end
   }
-  use {'windwp/nvim-autopairs', config = function() require('user.config.autopairs') end}
+  use { 'windwp/nvim-autopairs', config = function() require('user.config.autopairs') end }
 
   -- Git
   use { 'lewis6991/gitsigns.nvim', tag = 'release', config = function() require('user.config.gitsigns') end } -- Editor side git status color
@@ -119,6 +119,7 @@ return packer.startup(function(use)
   use { 'lukas-reineke/indent-blankline.nvim', config = function() require('user.config.indentation') end } -- Indentation guidelines
   use { 'ellisonleao/glow.nvim', branch = 'main' } -- CLI markdown renderer
   use 'RRethy/vim-illuminate' -- Shows code context
+  use { 'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
   use { 'SmiteshP/nvim-navic', requires = 'neovim/nvim-lspconfig', config = function() require('user.config.navic') end } -- Display code context
   use { 'mg979/vim-visual-multi', branch = 'master' } -- Multiple cursor actions
   use { 'karb94/neoscroll.nvim', config = function() require('user.config.scroll') end } -- Smooth scrolling

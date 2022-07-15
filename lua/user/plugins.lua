@@ -30,9 +30,10 @@ return packer.startup(function(use)
   use { 'kyazdani42/nvim-web-devicons', config = function() require('user.config.web-devicons') end } -- Generic icons for some packages
 
   -- Themes
-  use { 'navarasu/onedark.nvim', config = function()
-    vim.cmd(':colorscheme onedark')
-  end }
+  use { 'navarasu/onedark.nvim', config = function() require('user.config.themes.onedark') end }
+
+  -- Dashboard/startpage
+  use { 'goolord/alpha-nvim', config = function() require 'alpha'.setup(require 'alpha.themes.dashboard'.config) end }
 
   -- Fuzzy search finder
   use {
@@ -110,10 +111,17 @@ return packer.startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = function() require('user.config.lualine') end,
+    after = 'onedark.nvim',
   }
 
   -- Terminal
-  use { "akinsho/toggleterm.nvim", tag = 'v2.*', config = function() require('user.config.toggleterm') end }
+  use {
+    "akinsho/toggleterm.nvim", tag = 'v2.*',
+    config = function()
+      require('user.config.toggleterm')
+      require('user.config.lazygit')
+    end
+  }
 
   -- Others
   use { 'lukas-reineke/indent-blankline.nvim', config = function() require('user.config.indentation') end } -- Indentation guidelines
@@ -121,7 +129,7 @@ return packer.startup(function(use)
   use 'RRethy/vim-illuminate' -- Shows code context
   use { 'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
   use { 'SmiteshP/nvim-navic', requires = 'neovim/nvim-lspconfig', config = function() require('user.config.navic') end } -- Display code context
-  use { 'mg979/vim-visual-multi', branch = 'master' } -- Multiple cursor actions
+  use { 'mg979/vim-visual-multi', branch = 'master', config = function () require('user.config.vim-visual-multi') end } -- Multiple cursor actions
   use { 'karb94/neoscroll.nvim', config = function() require('user.config.scroll') end } -- Smooth scrolling
   use { 'numToStr/Comment.nvim', config = function() require('user.config.commenter') end, } -- Commenter
   use { 'nacro90/numb.nvim', config = function() require('user.config.goto') end } -- Goto line

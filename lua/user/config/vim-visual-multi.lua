@@ -1,0 +1,3 @@
+-- vim.g.VM_maps = {
+--   ["I BS"] = '', -- disable backspace mapping (Conflicts with nvim-autopairs)
+-- }

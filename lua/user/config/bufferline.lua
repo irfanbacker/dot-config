@@ -7,7 +7,7 @@ require('bufferline').setup {
       local s = " "
       for e, n in pairs(diagnostics_dict) do
         local sym = e == "error" and " "
-            or (e == "warning" and " " or "")
+            or (e == "warning" and " " or "")
         s = s .. n .. sym
       end
       return s
@@ -15,7 +15,6 @@ require('bufferline').setup {
     offsets = {
       {
         filetype = "NvimTree",
-        text_align = "left",
       }
     },
   }

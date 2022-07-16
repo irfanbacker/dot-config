@@ -4,5 +4,5 @@
     "vim"
   ],
   "Lua.runtime.version": "LuaJIT",
-  "Lua.workspace.lubrary": "lua"
+  "Lua.workspace.library": "lua"
 }

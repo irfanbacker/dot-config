@@ -9,9 +9,22 @@ local lspkind = require 'lspkind'
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
+  window = {
+    -- completion = cmp.config.window.bordered({ border = 'single' }),
+    -- documentation = cmp.config.window.bordered({ border = 'single' }),
+  },
   formatting = {
     format = lspkind.cmp_format({
       mode = "symbol_text",
+      before = function(entry, vim_item)
+        vim_item.menu = ({
+          nvim_lsp = "[LSP]",
+          luasnip = "[Snippet]",
+          buffer = "[Buffer]",
+          path = "[Path]",
+        })[entry.source.name]
+        return vim_item
+      end,
     }),
   },
   snippet = {
@@ -66,6 +79,12 @@ cmp.setup.filetype('gitcommit', {
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
+  formatting = {
+    fields = { 'abbr' },
+    format = function(_, vim_item)
+      return vim_item
+    end,
+  },
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' }
@@ -74,6 +93,12 @@ cmp.setup.cmdline('/', {
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
+  formatting = {
+    fields = { 'abbr' },
+    format = function(_, vim_item)
+      return vim_item
+    end,
+  },
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'path' }

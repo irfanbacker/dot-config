@@ -45,7 +45,7 @@ end
 local lspconfig = require("lspconfig")
 
 local servers = { "vimls", "gopls", "marksman", "jsonls", "yamlls", "clangd", "pyright", "rust_analyzer", "dartls",
-  "tsserver", "sumneko_lua" }
+  "tsserver", "sumneko_lua", "jdtls" }
 
 lsp_installer.setup({
   ensure_installed = servers,

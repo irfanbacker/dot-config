@@ -6,7 +6,11 @@ require("nvim-tree").setup({
   renderer = {
     group_empty = true,
     highlight_git = true,
-  }
+    icons = { git_placement = 'after' },
+  },
+  diagnostics = {
+    enable = true,
+  },
 })
 
 -- COnfig

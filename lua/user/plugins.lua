@@ -33,7 +33,7 @@ return packer.startup(function(use)
   use { 'navarasu/onedark.nvim', config = function() require('user.config.themes.onedark') end }
 
   -- Dashboard/startpage
-  use { 'goolord/alpha-nvim', config = function() require 'alpha'.setup(require 'alpha.themes.dashboard'.config) end }
+  use { 'goolord/alpha-nvim', config = function() require('user.config.alpha') end }
 
   -- Fuzzy search finder
   use {

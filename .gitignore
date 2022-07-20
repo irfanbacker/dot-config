@@ -1,0 +1,12 @@
+*
+!*/
+!.gitignore
+
+# starship.rs terminal prompt
+!starship.toml
+
+# neovim
+!nvim/**
+
+# alacritty terminal
+!alacritty/**

@@ -2,7 +2,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+  Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
     install_path })
   vim.api.nvim_command('packadd packer.nvim')
 end
@@ -60,10 +60,19 @@ return packer.startup(function(use)
 
   -- LSP
   use { 'neovim/nvim-lspconfig', config = function() require('user.config.lsp-config') end } -- Native LSP
-  use 'williamboman/nvim-lsp-installer' -- Language server installer for native LSP
   use {
     'kosayoda/nvim-lightbulb', -- Show code action lightbulb icon
     requires = 'antoinemadec/FixCursorHold.nvim',
+    config = function()
+      vim.api.nvim_set_hl(0, "LightBulbSignCodeActions", { default = true, fg = "yellow" })
+      vim.fn.sign_define('LightBulbSign', { text = "", texthl = "LightBulbSignCodeActions" })
+    end,
+  }
+
+  -- Language tools manager/installer
+  use { "williamboman/mason.nvim", config = function() require('user.config.mason') end, }
+  use { "williamboman/mason-lspconfig.nvim", requires = { 'neovim/nvim-lspconfig', 'mason.nvim' }, -- For managing LSP configs with nvim-lspconfig
+    config = function() require('user.config.lsp-config') end,
   }
 
   -- Diagnostics
@@ -129,13 +138,13 @@ return packer.startup(function(use)
   use 'RRethy/vim-illuminate' -- Shows code context
   use { 'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }
   use { 'SmiteshP/nvim-navic', requires = 'neovim/nvim-lspconfig', config = function() require('user.config.navic') end } -- Display code context
-  use { 'mg979/vim-visual-multi', branch = 'master', config = function () require('user.config.vim-visual-multi') end } -- Multiple cursor actions
+  use { 'mg979/vim-visual-multi', branch = 'master', config = function() require('user.config.vim-visual-multi') end } -- Multiple cursor actions
   use { 'karb94/neoscroll.nvim', config = function() require('user.config.scroll') end } -- Smooth scrolling
   use { 'numToStr/Comment.nvim', config = function() require('user.config.commenter') end, } -- Commenter
   use { 'nacro90/numb.nvim', config = function() require('user.config.goto') end } -- Goto line
 
   -- Install all packages if packer.nvim is just installed
-  if packer_bootstrap then
+  if Packer_bootstrap then
     require('packer').sync()
   end
 end)

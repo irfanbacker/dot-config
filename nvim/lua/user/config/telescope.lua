@@ -13,5 +13,6 @@ require('telescope').load_extension('ui-select')
 local opts = { noremap = true }
 vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)
 vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
+vim.keymap.set('n', '<leader>fd', '<cmd>Telescope current_buffer_fuzzy_find<cr>', opts)
 vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
 vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)

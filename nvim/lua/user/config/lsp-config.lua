@@ -1,4 +1,4 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not status_ok then
   return
 end
@@ -25,13 +25,11 @@ local common_on_attach = function(client, bufnr)
   buf_set_keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
   buf_set_keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  buf_set_keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
   buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_set_keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()CR>", opts)
-  buf_set_keymap("n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-  buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-  buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  buf_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  buf_set_keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
   buf_set_keymap("n", "<leader>o", [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 
@@ -44,21 +42,23 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "vimls", "gopls", "marksman", "jsonls", "yamlls", "clangd", "pyright", "rust_analyzer", "dartls",
-  "tsserver", "sumneko_lua", "jdtls", "taplo" }
+local servers = { "sumneko_lua" }
 
-lsp_installer.setup({
+mason_lspconfig.setup({
   ensure_installed = servers,
+  automatic_installation = true,
 })
 
-for _, server in pairs(servers) do
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  local opts = {
-    on_attach = common_on_attach,
-    capabilities = capabilities,
-  }
-  lspconfig[server].setup(opts)
-end
+mason_lspconfig.setup_handlers {
+  function(server_name) -- default handler (optional)
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local opts = {
+      on_attach = common_on_attach,
+      capabilities = capabilities,
+    }
+    lspconfig[server_name].setup(opts)
+  end,
+}
 
 -- format buffer keybind
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.formatting_sync, { noremap = true })

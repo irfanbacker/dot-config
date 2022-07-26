@@ -134,6 +134,7 @@ return packer.startup(function(use)
 
   -- Others
   use { 'lukas-reineke/indent-blankline.nvim', config = function() require('user.config.indentation') end } -- Indentation guidelines
+  use { 'anuvyklack/pretty-fold.nvim', config = function() require('user.config.pretty-fold') end } -- Prettify folding
   use { 'ellisonleao/glow.nvim', branch = 'main' } -- CLI markdown renderer
   use 'RRethy/vim-illuminate' -- Shows code context
   use { 'rcarriga/nvim-notify', config = function() vim.notify = require('notify') end }

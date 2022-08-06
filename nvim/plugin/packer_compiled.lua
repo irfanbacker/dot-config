@@ -254,7 +254,7 @@ _G.packer_plugins = {
   },
   ["onedark.nvim"] = {
     after = { "lualine.nvim" },
-    config = { "\27LJ\2\2:\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\31user.config.themes.onedark\frequire\0" },
+    config = { "\27LJ\2\2g\0\0\2\0\5\0\b6\0\0\0'\1\1\0B\0\2\0016\0\2\0009\0\3\0'\1\4\0B\0\2\1K\0\1\0\25:colorscheme onedark\bcmd\bvim\31user.config.themes.onedark\frequire\0" },
     loaded = true,
     only_config = true,
     path = "/home/irfanbacker/.local/share/nvim/site/pack/packer/start/onedark.nvim",
@@ -347,7 +347,7 @@ try_loadstring("\27LJ\2\0023\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\24user.
 time([[Config for trouble.nvim]], false)
 -- Config for: onedark.nvim
 time([[Config for onedark.nvim]], true)
-try_loadstring("\27LJ\2\2:\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\31user.config.themes.onedark\frequire\0", "config", "onedark.nvim")
+try_loadstring("\27LJ\2\2g\0\0\2\0\5\0\b6\0\0\0'\1\1\0B\0\2\0016\0\2\0009\0\3\0'\1\4\0B\0\2\1K\0\1\0\25:colorscheme onedark\bcmd\bvim\31user.config.themes.onedark\frequire\0", "config", "onedark.nvim")
 time([[Config for onedark.nvim]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)

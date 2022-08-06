@@ -30,7 +30,16 @@ return packer.startup(function(use)
   use { 'kyazdani42/nvim-web-devicons', config = function() require('user.config.web-devicons') end } -- Generic icons for some packages
 
   -- Themes
-  use { 'navarasu/onedark.nvim', config = function() require('user.config.themes.onedark') end }
+  use { 'navarasu/onedark.nvim', config = function()
+    require('user.config.themes.onedark')
+    vim.cmd(':colorscheme onedark')
+  end } -- onedark
+  -- use { 'projekt0n/github-nvim-theme', config = function()
+  --   require('user.config.themes.github-theme')
+  --   vim.cmd(':colorscheme github_dark_theme')
+  -- end } -- github_dark_default
+
+  -- Set colorscheme
 
   -- Dashboard/startpage
   use { 'goolord/alpha-nvim', config = function() require('user.config.alpha') end }

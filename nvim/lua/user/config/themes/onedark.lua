@@ -40,5 +40,3 @@ require('onedark').setup({
     NavicSeparator = { bg = '$bg2', fg = '$red' },
   },
 })
-
-vim.cmd(':colorscheme onedark')

@@ -42,7 +42,7 @@ return packer.startup(function(use)
   -- Set colorscheme
 
   -- Dashboard/startpage
-  use { 'goolord/alpha-nvim', config = function() require('user.config.alpha') end }
+  use { 'goolord/alpha-nvim', config = function() require('user.config.alpha') end, commit = '0b990ca6557a740f717d6cbcc41e8b55d5b5ce40' }
 
   -- Fuzzy search finder
   use {
@@ -79,7 +79,7 @@ return packer.startup(function(use)
   }
 
   -- Language tools manager/installer
-  use { "williamboman/mason.nvim", config = function() require('user.config.mason') end, }
+  use { "williamboman/mason.nvim", config = function() require('user.config.mason') end, run = ":MasonUpdate"}
   use { "williamboman/mason-lspconfig.nvim", requires = { 'neovim/nvim-lspconfig', 'mason.nvim' }, -- For managing LSP configs with nvim-lspconfig
     config = function() require('user.config.lsp-config') end,
   }

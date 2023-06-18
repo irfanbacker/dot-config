@@ -42,7 +42,7 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "sumneko_lua" }
+local servers = { "lua_ls" }
 
 mason_lspconfig.setup({
   ensure_installed = servers,
@@ -51,7 +51,7 @@ mason_lspconfig.setup({
 
 mason_lspconfig.setup_handlers {
   function(server_name) -- default handler (optional)
-    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
     local opts = {
       on_attach = common_on_attach,
       capabilities = capabilities,
